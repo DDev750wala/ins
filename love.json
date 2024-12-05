@@ -1,0 +1,1190 @@
+{
+    "Caesar Cipher - Part 1": {
+        "prefix": "caesar_1",
+        "body": [
+            "def caesar_cipher(text, shift, encrypt=True):",
+            "    result = ''",
+            "    if not encrypt:",
+            "        shift = -shift",
+            "    for char in text:",
+            "        if char.isalpha():",
+            "            shift_amount = shift % 26",
+            "            base = ord('a') if char.islower() else ord('A')",
+            "            result += chr((ord(char) - base + shift_amount) % 26 + base)",
+            "        else:",
+            "            result += char",
+            "    return result"
+        ],
+        "description": "Caesar cipher implementation"
+    },
+    "Caesar Cipher - Part 2 (Read File)": {
+        "prefix": "caesar_2",
+        "body": [
+            "def read_file(filename):",
+            "    with open(filename, 'r') as file:",
+            "        return file.read()"
+        ],
+        "description": "Function to read a file"
+    },
+    "Caesar Cipher - Part 3 (Write File)": {
+        "prefix": "caesar_3",
+        "body": [
+            "def write_file(filename, content):",
+            "    with open(filename, 'w') as file:",
+            "        file.write(content)"
+        ],
+        "description": "Function to write content to a file"
+    },
+    "Caesar Cipher - Part 4 (Main Menu)": {
+        "prefix": "caesar_4",
+        "body": [
+            "if __name__ == '__main__':",
+            "    print('Welcome to the Caesar Cipher: ')",
+            "    while True:",
+            "        print('\\nMenu:')",
+            "        print('1. Encrypt using Caesar Cipher')",
+            "        print('2. Decrypt using Caesar Cipher')",
+            "        print('3. Exit')",
+            "        choice = input('Enter your choice: ')",
+            "        if choice == '3':",
+            "            break"
+        ],
+        "description": "Main menu and exit option"
+    },
+    "Caesar Cipher - Part 5 (Encrypt Option)": {
+        "prefix": "caesar_5",
+        "body": [
+            "        if choice == '1':",
+            "            shift = int(input('Enter the shift value: '))",
+            "            content = read_file('decrypted.txt')",
+            "            encrypted_content = caesar_cipher(content, shift, encrypt=True)",
+            "            write_file('encrypted.txt', encrypted_content)",
+            "            print('Encryption complete. Check the file: encrypted.txt')"
+        ],
+        "description": "Encrypt option logic"
+    },
+    "Caesar Cipher - Part 6 (Decrypt Option)": {
+        "prefix": "caesar_6",
+        "body": [
+            "        elif choice == '2':",
+            "            shift = int(input('Enter the shift value: '))",
+            "            content = read_file('encrypted.txt')",
+            "            decrypted_content = caesar_cipher(content, shift, encrypt=False)",
+            "            write_file('decrypted.txt', decrypted_content)",
+            "            print('Decryption complete. Check the file: decrypted.txt')"
+        ],
+        "description": "Decrypt option logic"
+    },
+    "Caesar Cipher - Part 7 (Invalid Choice)": {
+        "prefix": "caesar_7",
+        "body": [
+            "        else:",
+            "            print('Invalid choice. Please try again.')"
+        ],
+        "description": "Handling invalid menu options"
+    },
+    "Monoalphabetic Cipher - Part 1 (Cipher Function)": {
+        "prefix": "monoalphabetic_1",
+        "body": [
+            "import string",
+            "import random",
+            "",
+            "def monoalphabetic_cipher(text, key, encrypt=True):",
+            "    if encrypt:",
+            "        key_map = {original: substitute for original, substitute in zip(string.ascii_uppercase + string.ascii_lowercase, key)}",
+            "    else:",
+            "        key_map = {substitute: original for original, substitute in zip(string.ascii_uppercase + string.ascii_lowercase, key)}",
+            "",
+            "    result = ''",
+            "    for char in text:",
+            "        result += key_map.get(char, char)",
+            "",
+            "    return result"
+        ],
+        "description": "Function to perform monoalphabetic encryption and decryption"
+    },
+    "Monoalphabetic Cipher - Part 2 (Generate Key)": {
+        "prefix": "monoalphabetic_2",
+        "body": [
+            "def generate_monoalphabetic_key():",
+            "    characters = list(string.ascii_uppercase)",
+            "    random.shuffle(characters)",
+            "    return ''.join(characters)"
+        ],
+        "description": "Function to generate a shuffled monoalphabetic key"
+    },
+    "Monoalphabetic Cipher - Part 3 (Read File)": {
+        "prefix": "monoalphabetic_3",
+        "body": [
+            "def read_file(filename):",
+            "    with open(filename, 'r') as file:",
+            "        return file.read()"
+        ],
+        "description": "Function to read content from a file"
+    },
+    "Monoalphabetic Cipher - Part 4 (Write File)": {
+        "prefix": "monoalphabetic_4",
+        "body": [
+            "def write_file(filename, content):",
+            "    with open(filename, 'w') as file:",
+            "        file.write(content)"
+        ],
+        "description": "Function to write content to a file"
+    },
+    "Monoalphabetic Cipher - Part 5 (Main Menu Start)": {
+        "prefix": "monoalphabetic_5",
+        "body": [
+            "print('Welcome to the Cipher Program')",
+            "while True:",
+            "    print('\\nMenu:')",
+            "    print('1. Encrypt using Monoalphabetic Cipher')",
+            "    print('2. Decrypt using Monoalphabetic Cipher')",
+            "    print('3. Exit')",
+            "    choice = input('Enter your choice: ')",
+            "    if choice == '3':",
+            "        break"
+        ],
+        "description": "Main menu and loop structure"
+    },
+    "Monoalphabetic Cipher - Part 6 (Encryption)": {
+        "prefix": "monoalphabetic_6",
+        "body": [
+            "    if choice == '1':",
+            "        filename = input('Enter the filename: ')",
+            "        content = read_file(filename)",
+            "        key = generate_monoalphabetic_key()",
+            "        print('Generated key:', key)",
+            "        encrypted_content = monoalphabetic_cipher(content, key, encrypt=True)",
+            "        output_filename = input('Enter the output filename: ')",
+            "        write_file(output_filename, encrypted_content)",
+            "        print('Encryption complete. Check the file:', output_filename)"
+        ],
+        "description": "Option to encrypt the content using the monoalphabetic cipher"
+    },
+    "Monoalphabetic Cipher - Part 7 (Decryption)": {
+        "prefix": "monoalphabetic_7",
+        "body": [
+            "    elif choice == '2':",
+            "        filename = input('Enter the filename: ')",
+            "        content = read_file(filename)",
+            "        key = input('Enter the key: ')",
+            "        decrypted_content = monoalphabetic_cipher(content, key, encrypt=False)",
+            "        output_filename = input('Enter the output filename: ')",
+            "        write_file(output_filename, decrypted_content)",
+            "        print('Decryption complete. Check the file:', output_filename)"
+        ],
+        "description": "Option to decrypt the content using the monoalphabetic cipher"
+    },
+    "Monoalphabetic Cipher - Part 8 (Invalid Choice)": {
+        "prefix": "monoalphabetic_8",
+        "body": [
+            "    else:",
+            "        print('Invalid choice. Please try again.')"
+        ],
+        "description": "Handling invalid menu choices"
+    },
+    "Playfair Cipher - Part 1 (Imports)": {
+        "prefix": "playfair_1",
+        "body": [
+            "from string import ascii_lowercase as alc"
+        ],
+        "description": "Imports required for the Playfair Cipher"
+    },
+    "Playfair Cipher - Part 2 (Create Matrix Function - Part 1)": {
+        "prefix": "playfair_2",
+        "body": [
+            "def create_matrix(key: str) -> list:",
+            "    matrix = []",
+            "    used_char = []",
+            "    temp_list = []",
+            "",
+            "    for char in key:",
+            "        if char not in used_char:",
+            "            temp_list.append(char)",
+            "            used_char.append(char)",
+            "            if 'i' in used_char:",
+            "                used_char.append('j')",
+            "            if 'j' in used_char:",
+            "                used_char.append('i')"
+        ],
+        "description": "Part 1 of the Create Matrix function to initialize variables and process the key"
+    },
+    "Playfair Cipher - Part 3 (Create Matrix Function - Part 2)": {
+        "prefix": "playfair_3",
+        "body": [
+            "        if len(temp_list) == 5:",
+            "            matrix.append(temp_list)",
+            "            temp_list = []",
+            "",
+            "    for char in alc:",
+            "        if char not in used_char:",
+            "            temp_list.append(char)",
+            "            used_char.append(char)",
+            "            if 'i' in used_char:",
+            "                used_char.append('j')",
+            "            if 'j' in used_char:",
+            "                used_char.append('i')"
+        ],
+        "description": "Part 2 of the Create Matrix function to add remaining alphabet letters to the matrix"
+    },
+    "Playfair Cipher - Part 4 (Create Matrix Function - Part 3)": {
+        "prefix": "playfair_4",
+        "body": [
+            "        if len(temp_list) == 5:",
+            "            matrix.append(temp_list)",
+            "            temp_list = []",
+            "",
+            "    if temp_list:",
+            "        matrix.append(temp_list)",
+            "",
+            "    return matrix"
+        ],
+        "description": "Part 3 of the Create Matrix function to finalize the matrix and return it"
+    },
+    "Playfair Cipher - Part 5 (Find Index Function)": {
+        "prefix": "playfair_5",
+        "body": [
+            "def find_index(matrix: list, element: str) -> list:",
+            "    for i in range(5):",
+            "        for j in range(5):",
+            "            if matrix[i][j] == element:",
+            "                return [i, j]"
+        ],
+        "description": "Find the index of a character in the Playfair cipher matrix"
+    },
+    "Playfair Cipher - Part 6 (Find Cipher Function - Part 1)": {
+        "prefix": "playfair_6",
+        "body": [
+            "def find_cipher(original_string: str, matrix: list) -> str:",
+            "    result = ''",
+            "",
+            "    if len(original_string) % 2 == 1:",
+            "        original_string += 'x'"
+        ],
+        "description": "Part 1 of the Find Cipher function to initialize encryption and handle odd-length strings"
+    },
+    "Playfair Cipher - Part 7 (Find Cipher Function - Part 2)": {
+        "prefix": "playfair_7",
+        "body": [
+            "    bigraph_list = []",
+            "    j = 0",
+            "    while j < len(original_string):",
+            "        if j + 1 < len(original_string) and original_string[j] == original_string[j + 1]:",
+            "            bigraph_list.append([original_string[j], 'x'])",
+            "            j += 1",
+            "        else:",
+            "            bigraph_list.append([original_string[j], original_string[j + 1]])",
+            "            j += 2"
+        ],
+        "description": "Part 2 of the Find Cipher function to create bigraphs from the original string"
+    },
+    "Playfair Cipher - Part 8 (Find Cipher Function - Part 3)": {
+        "prefix": "playfair_8",
+        "body": [
+            "    for couple in bigraph_list:",
+            "        couple = ['i' if char == 'j' else char for char in couple]",
+            "",
+            "        index_first = find_index(matrix, couple[0])",
+            "        index_second = find_index(matrix, couple[1])",
+            "",
+            "        if index_first[0] == index_second[0]:",
+            "            result += matrix[index_first[0] % 5][(index_first[1] + 1) % 5]",
+            "            result += matrix[index_second[0] % 5][(index_second[1] + 1) % 5]"
+        ],
+        "description": "Part 3 of the Find Cipher function to encrypt bigraphs in the same row"
+    },
+    "Playfair Cipher - Part 9 (Find Cipher Function - Part 4)": {
+        "prefix": "playfair_9",
+        "body": [
+            "        elif index_first[1] == index_second[1]:",
+            "            result += matrix[(index_first[0] + 1) % 5][index_first[1] % 5]",
+            "            result += matrix[(index_second[0] + 1) % 5][index_second[1] % 5]",
+            "        else:",
+            "            result += matrix[index_first[0]][index_second[1]]",
+            "            result += matrix[index_second[0]][index_first[1]]",
+            "",
+            "    return result"
+        ],
+        "description": "Part 4 of the Find Cipher function to encrypt bigraphs in the same column or rectangle"
+    },
+    "Playfair Cipher - Part 10 (Decrypt Cipher Function - Part 1)": {
+        "prefix": "playfair_10",
+        "body": [
+            "def decrypt_cipher(encrypted_string: str, matrix: list) -> str:",
+            "    result = ''",
+            "    bigraph_list = []",
+            "    j = 0",
+            "    while j < len(encrypted_string):",
+            "        bigraph_list.append([encrypted_string[j], encrypted_string[j + 1]])",
+            "        j += 2"
+        ],
+        "description": "Part 1 of the Decrypt Cipher function to initialize decryption and split the encrypted string into bigraphs"
+    },
+    "Playfair Cipher - Part 11 (Decrypt Cipher Function - Part 2)": {
+        "prefix": "playfair_11",
+        "body": [
+            "    for couple in bigraph_list:",
+            "        couple = ['i' if char == 'j' else char for char in couple]",
+            "",
+            "        index_first = find_index(matrix, couple[0])",
+            "        index_second = find_index(matrix, couple[1])",
+            "",
+            "        if index_first[0] == index_second[0]:",
+            "            result += matrix[index_first[0] % 5][(index_first[1] - 1) % 5]",
+            "            result += matrix[index_second[0] % 5][(index_second[1] - 1) % 5]"
+        ],
+        "description": "Part 2 of the Decrypt Cipher function to decrypt bigraphs in the same row"
+    },
+    "Playfair Cipher - Part 12 (Decrypt Cipher Function - Part 3)": {
+        "prefix": "playfair_12",
+        "body": [
+            "        elif index_first[1] == index_second[1]:",
+            "            result += matrix[(index_first[0] - 1) % 5][index_first[1] % 5]",
+            "            result += matrix[(index_second[0] - 1) % 5][index_second[1] % 5]",
+            "        else:",
+            "            result += matrix[index_first[0]][index_second[1]]",
+            "            result += matrix[index_second[0]][index_first[1]]",
+            "",
+            "    return result"
+        ],
+        "description": "Part 3 of the Decrypt Cipher function to decrypt bigraphs in the same column or rectangle"
+    },
+    "Playfair Cipher - Part 13 (Main Program - Encrypt)": {
+        "prefix": "playfair_13",
+        "body": [
+            "if __name__ == '__main__':",
+            "    print('Welcome to Playfair Cipher: ')",
+            "",
+            "    while True:",
+            "        operation = int(input('1: Encrypt \\n2: Decrypt \\n3: Exit'))",
+            "",
+            "        if operation == 1:",
+            "            original_string: str = input('Enter the original string: ').lower()",
+            "            key: str = input('Enter the key: ')",
+            "            matrix = create_matrix(key)",
+            "",
+            "            encrypted_text = find_cipher(original_string, matrix)",
+            "            print(encrypted_text)"
+        ],
+        "description": "Main program to handle user input and encryption"
+    },
+    "Playfair Cipher - Part 14 (Main Program - Decrypt)": {
+        "prefix": "playfair_14",
+        "body": [
+            "        elif operation == 2:",
+            "            encrypted_string: str = input('Enter the encrypted string: ').lower()",
+            "            key: str = input('Enter the key: ')",
+            "            matrix = create_matrix(key)",
+            "",
+            "            decrypted_text = decrypt_cipher(encrypted_string, matrix)",
+            "            print(decrypted_text)"
+        ],
+        "description": "Main program to handle user input and decryption"
+    },
+    "Playfair Cipher - Part 15 (Main Program - Exit)": {
+        "prefix": "playfair_15",
+        "body": [
+            "        elif operation == 3:",
+            "            print('Exiting the Playfair Cipher program.')",
+            "            break"
+        ],
+        "description": "Main program to exit when the user chooses option 3"
+    },
+    "Hill Cipher - Part 1 (Import Libraries)": {
+        "prefix": "hill_1",
+        "body": [
+            "import numpy as np"
+        ],
+        "description": "Imports the required numpy library for matrix operations"
+    },
+    "Hill Cipher - Part 2 (Create Key Matrix Function)": {
+        "prefix": "hill_2",
+        "body": [
+            "def create_key_matrix(key, n):",
+            "    key = key.upper().replace(' ', '')[:n * n]",
+            "    key_matrix = [[ord(key[i * n + j]) % 65 for j in range(n)] for i in range(n)]",
+            "    return np.array(key_matrix)"
+        ],
+        "description": "Function to create a key matrix from the input key"
+    },
+    "Hill Cipher - Part 3 (Modular Inverse Function)": {
+        "prefix": "hill_3",
+        "body": [
+            "def mod_inverse(a, m):",
+            "    for x in range(1, m):",
+            "        if (a * x) % m == 1:",
+            "            return x",
+            "    return -1"
+        ],
+        "description": "Function to compute the modular inverse of a number"
+    },
+    "Hill Cipher - Part 4 (Hill Encrypt Function - Part 1)": {
+        "prefix": "hill_4",
+        "body": [
+            "def hill_encrypt(plain_text, key_matrix, n):",
+            "    plain_text = plain_text.upper().replace(' ', '')",
+            "    while len(plain_text) % n != 0:",
+            "        plain_text += 'X'"
+        ],
+        "description": "Part 1 of the Hill Encrypt function to preprocess the plain text"
+    },
+    "Hill Cipher - Part 5 (Hill Encrypt Function - Part 2)": {
+        "prefix": "hill_5",
+        "body": [
+            "    plain_matrix = [ord(c) % 65 for c in plain_text]",
+            "    plain_matrix = np.array(plain_matrix).reshape(-1, n)",
+            "",
+            "    encrypted_matrix = (np.dot(plain_matrix, key_matrix) % 26).astype(int)",
+            "    encrypted_text = ''.join(chr(c + 65) for c in encrypted_matrix.flatten())",
+            "",
+            "    return encrypted_text"
+        ],
+        "description": "Part 2 of the Hill Encrypt function to generate the encrypted text"
+    },
+    "Hill Cipher - Part 6 (Hill Decrypt Function - Part 1)": {
+        "prefix": "hill_6",
+        "body": [
+            "def hill_decrypt(cipher_text, key_matrix, n):",
+            "",
+            "    det = int(np.round(np.linalg.det(key_matrix)))",
+            "    det_inv = mod_inverse(det % 26, 26)"
+        ],
+        "description": "Part 1 of the Hill Decrypt function to compute the determinant and its modular inverse"
+    },
+    "Hill Cipher - Part 7 (Hill Decrypt Function - Part 2)": {
+        "prefix": "hill_7",
+        "body": [
+            "    adjugate_matrix = np.round(det * np.linalg.inv(key_matrix)).astype(int) % 26",
+            "",
+            "    key_inverse_matrix = (det_inv * adjugate_matrix) % 26",
+            "",
+            "    cipher_matrix = [ord(c) % 65 for c in cipher_text]",
+            "    cipher_matrix = np.array(cipher_matrix).reshape(-1, n)"
+        ],
+        "description": "Part 2 of the Hill Decrypt function to compute the adjugate and inverse of the key matrix"
+    },
+    "Hill Cipher - Part 8 (Hill Decrypt Function - Part 3)": {
+        "prefix": "hill_8",
+        "body": [
+            "    decrypted_matrix = (np.dot(cipher_matrix, key_inverse_matrix) % 26).astype(int)",
+            "",
+            "    decrypted_text = ''.join(chr(c + 65) for c in decrypted_matrix.flatten())",
+            "",
+            "    decrypted_text = decrypted_text.rstrip('X')",
+            "    return decrypted_text"
+        ],
+        "description": "Part 3 of the Hill Decrypt function to decrypt the cipher text"
+    },
+    "Hill Cipher - Part 9 (Main Program - Part 1)": {
+        "prefix": "hill_9",
+        "body": [
+            "if __name__ == '__main__':",
+            "    while True:",
+            "        print('\\nHill Cipher Program')",
+            "        print('1. Encrypt')",
+            "        print('2. Decrypt')",
+            "        print('3. Exit')",
+            "        choice = input('Enter your choice: ')"
+        ],
+        "description": "Part 1 of the main program to display the menu and get user choice"
+    },
+    "Hill Cipher - Part 10 (Main Program - Part 2)": {
+        "prefix": "hill_10",
+        "body": [
+            "        if choice in ['1', '2']:",
+            "            key = input('Enter the key: ')",
+            "            n = int(len(key) ** 0.5)",
+            "            key_matrix = create_key_matrix(key, n)"
+        ],
+        "description": "Part 2 of the main program to handle key input and matrix generation"
+    },
+    "Hill Cipher - Part 11 (Main Program - Part 3)": {
+        "prefix": "hill_11",
+        "body": [
+            "            with open('input.txt', 'r') as f:",
+            "                text = f.read().strip()",
+            "            print(f'The input text is: {text}')"
+        ],
+        "description": "Part 3 of the main program to read input text from a file"
+    },
+    "Hill Cipher - Part 12 (Main Program - Part 4)": {
+        "prefix": "hill_12",
+        "body": [
+            "            if choice == '1':",
+            "                result = hill_encrypt(text, key_matrix, n)",
+            "                print('Encryption complete.')",
+            "            else:",
+            "                result = hill_decrypt(text, key_matrix, n)",
+            "                print('Decryption complete.')"
+        ],
+        "description": "Part 4 of the main program to perform encryption or decryption based on user choice"
+    },
+    "Hill Cipher - Part 13 (Main Program - Part 5)": {
+        "prefix": "hill_13",
+        "body": [
+            "            with open('output.txt', 'w') as f:",
+            "                f.write(result)",
+            "",
+            "            with open('output.txt', 'r') as file:",
+            "                print(f'The output text is {file.read()}')",
+            "            print('Result saved to output.txt')"
+        ],
+        "description": "Part 5 of the main program to write the result to a file and display it"
+    },
+    "Hill Cipher - Part 14 (Main Program - Exit)": {
+        "prefix": "hill_14",
+        "body": [
+            "        elif choice == '3':",
+            "            print('Exiting the program.')",
+            "            break",
+            "        else:",
+            "            print('Invalid choice. Please try again.')"
+        ],
+        "description": "Main program to handle exit and invalid input cases"
+    },
+    "Vigenère Cipher - Part 1 (Generate Key Function)": {
+        "prefix": "vign_1",
+        "body": [
+            "def generate_key(msg, key):",
+            "    key = list(key)",
+            "    if len(msg) == len(key):",
+            "        return key",
+            "    else:",
+            "        for i in range(len(msg) - len(key)):",
+            "            key.append(key[i % len(key)])",
+            "    return \"\".join(key)"
+        ],
+        "description": "Function to generate the key based on the message length"
+    },
+    "Vigenère Cipher - Part 2 (Encrypt Vigenère Function - Part 1)": {
+        "prefix": "vign_2",
+        "body": [
+            "def encrypt_vigenere(msg, key):",
+            "    encrypted_text = []",
+            "    key = generate_key(msg, key)"
+        ],
+        "description": "Part 1 of the encrypt Vigenère function"
+    },
+    "Vigenère Cipher - Part 3 (Encrypt Vigenère Function - Part 2)": {
+        "prefix": "vign_3",
+        "body": [
+            "    for i in range(len(msg)):",
+            "        char = msg[i]",
+            "        if char.isupper():",
+            "            encrypted_char = chr((ord(char) + ord(key[i]) - 2 * ord('A')) % 26 + ord('A'))",
+            "        elif char.islower():",
+            "            encrypted_char = chr((ord(char) + ord(key[i]) - 2 * ord('a')) % 26 + ord('a'))",
+            "        else:",
+            "            encrypted_char = char",
+            "        encrypted_text.append(encrypted_char)",
+            "    return \"\".join(encrypted_text)"
+        ],
+        "description": "Part 2 of the encrypt Vigenère function to encrypt the characters"
+    },
+    "Vigenère Cipher - Part 4 (Decrypt Vigenère Function - Part 1)": {
+        "prefix": "vign_4",
+        "body": [
+            "def decrypt_vigenere(msg, key):",
+            "    decrypted_text = []",
+            "    key = generate_key(msg, key)"
+        ],
+        "description": "Part 1 of the decrypt Vigenère function"
+    },
+    "Vigenère Cipher - Part 5 (Decrypt Vigenère Function - Part 2)": {
+        "prefix": "vign_5",
+        "body": [
+            "    for i in range(len(msg)):",
+            "        char = msg[i]",
+            "        if char.isupper():",
+            "            decrypted_char = chr((ord(char) - ord(key[i]) + 26) % 26 + ord('A'))",
+            "        elif char.islower():",
+            "            decrypted_char = chr((ord(char) - ord(key[i]) + 26) % 26 + ord('a'))",
+            "        else:",
+            "            decrypted_char = char",
+            "        decrypted_text.append(decrypted_char)",
+            "    return \"\".join(decrypted_text)"
+        ],
+        "description": "Part 2 of the decrypt Vigenère function to decrypt the characters"
+    },
+    "Vigenère Cipher - Part 6 (Process File Function - Part 1)": {
+        "prefix": "vign_6",
+        "body": [
+            "def process_file(input_filename, output_filename, key, mode):",
+            "    try:",
+            "        with open(input_filename, 'r') as input_file:",
+            "            content = input_file.read()"
+        ],
+        "description": "Part 1 of the process file function to read the file"
+    },
+    "Vigenère Cipher - Part 7 (Process File Function - Part 2)": {
+        "prefix": "vign_7",
+        "body": [
+            "            if mode == 1:",
+            "                processed_content = encrypt_vigenere(content, key)",
+            "            elif mode == 2:",
+            "                processed_content = decrypt_vigenere(content, key)"
+        ],
+        "description": "Part 2 of the process file function to process the content"
+    },
+    "Vigenère Cipher - Part 8 (Process File Function - Part 3)": {
+        "prefix": "vign_8",
+        "body": [
+            "            with open(output_filename, 'w') as output_file:",
+            "                output_file.write(processed_content)",
+            "            print('Successfully processed the file.')",
+            "    except FileNotFoundError:",
+            "        print('File not found.')"
+        ],
+        "description": "Part 3 of the process file function to write the processed content to the output file"
+    },
+    "Vigenère Cipher - Part 9 (Main Program - Part 1)": {
+        "prefix": "vign_9",
+        "body": [
+            "if __name__ == '__main__':",
+            "    key = input('Enter the key: ')",
+            "    while True:",
+            "        print('1. Encrypt')",
+            "        print('2. Decrypt')",
+            "        print('3. Exit')"
+        ],
+        "description": "Part 1 of the main program to display the menu and get user input"
+    },
+    "Vigenère Cipher - Part 10 (Main Program - Part 2)": {
+        "prefix": "vign_10",
+        "body": [
+            "        mode = int(input('Give mode of Encryption and Decryption: '))",
+            "        if mode == 3:",
+            "            break",
+            "        input_file = input('Enter input file name: ')",
+            "        output_file = input('Enter output file name: ')",
+            "        process_file(input_file, output_file, key, mode)"
+        ],
+        "description": "Part 2 of the main program to handle the mode of encryption/decryption and file processing"
+    },
+    "Transposition Cipher - Part 1 (Encrypt Function - Part 1)": {
+        "prefix": "trans_1",
+        "body": [
+            "def encrypt(plaintext, key):",
+            "    plaintext = plaintext.strip().replace(' ', '').replace('\\n', '').upper()",
+            "    words = list(plaintext[i:i + len(key)] for i in range(0, len(plaintext), len(key)))",
+            "    letters = [list(word) for word in words]"
+        ],
+        "description": "Part 1 of the encrypt function - preparing plaintext and key"
+    },
+    "Transposition Cipher - Part 2 (Encrypt Function - Part 2)": {
+        "prefix": "trans_2",
+        "body": [
+            "    if len(letters[-1]) != len(key):",
+            "        for _ in range(len(letters[-1]), len(key)):",
+            "            letters[-1].append('X')",
+            "    key = list(map(int, key.strip()))",
+            "    print(' '.join(map(str, key)))",
+            "    print_matrix(letters)"
+        ],
+        "description": "Part 2 of the encrypt function - padding and printing the matrix"
+    },
+    "Transposition Cipher - Part 3 (Encrypt Function - Part 3)": {
+        "prefix": "trans_3",
+        "body": [
+            "    encrypted_columns = ['' for _ in range(len(key))]",
+            "    for idx, col in enumerate(key):",
+            "        for row in letters:",
+            "            encrypted_columns[col - 1] += row[idx]",
+            "    ciphertext = ''.join(encrypted_columns)",
+            "    return ciphertext"
+        ],
+        "description": "Part 3 of the encrypt function - building encrypted columns"
+    },
+    "Transposition Cipher - Part 4 (Decrypt Function - Part 1)": {
+        "prefix": "trans_4",
+        "body": [
+            "def decrypt(ciphertext, key):",
+            "    ciphertext = ciphertext.strip().upper()",
+            "    key = list(map(int, key.strip()))",
+            "    num_rows = len(ciphertext) // len(key)",
+            "    num_cols = len(key)",
+            "    arr2 = [['' for _ in range(num_cols)] for _ in range(num_rows)]",
+            "    print(arr2)"
+        ],
+        "description": "Part 1 of the decrypt function - preparing the matrix"
+    },
+    "Transposition Cipher - Part 5 (Decrypt Function - Part 2)": {
+        "prefix": "trans_5",
+        "body": [
+            "    sorted_key_indices = sorted(range(len(key)), key=lambda k: key[k])",
+            "    index = 0",
+            "    for col in sorted_key_indices:",
+            "        for row in range(num_rows):",
+            "            arr2[row][col] = ciphertext[index]",
+            "            index += 1",
+            "    plaintext = ''.join(''.join(row) for row in arr2)",
+            "    plaintext = plaintext.rstrip('X')",
+            "    return plaintext"
+        ],
+        "description": "Part 2 of the decrypt function - building the plaintext from the matrix"
+    },
+    "Transposition Cipher - Part 6 (Print Matrix Function)": {
+        "prefix": "trans_6",
+        "body": [
+            "def print_matrix(matrix):",
+            "    for row in matrix:",
+            "        print(' '.join(map(str, row)))"
+        ],
+        "description": "Function to print the matrix"
+    },
+    "Transposition Cipher - Part 7 (Process File Function - Part 1)": {
+        "prefix": "trans_7",
+        "body": [
+            "def process_file(mode, key):",
+            "    try:",
+            "        if mode == 1:",
+            "            with open('plain.txt', 'r') as f:",
+            "                plaintext = f.read()",
+            "            encrypted_msg = encrypt(plaintext, key)",
+            "            with open('cipher.txt', 'w') as f:",
+            "                f.write(encrypted_msg)"
+        ],
+        "description": "Part 1 of the process file function - encryption mode"
+    },
+    "Transposition Cipher - Part 8 (Process File Function - Part 2)": {
+        "prefix": "trans_8",
+        "body": [
+            "        elif mode == 2:",
+            "            with open('cipher.txt', 'r') as f:",
+            "                ciphertext = f.read()",
+            "            decrypted_msg = decrypt(ciphertext, key)",
+            "            with open('decrypted.txt', 'w') as f:",
+            "                f.write(decrypted_msg)"
+        ],
+        "description": "Part 2 of the process file function - decryption mode"
+    },
+    "Transposition Cipher - Part 9 (Process File Function - Part 3)": {
+        "prefix": "trans_9",
+        "body": [
+            "        elif mode == 3:",
+            "            print('Exited!')",
+            "            return",
+            "        else:",
+            "            print('Invalid Choice.')",
+            "    except KeyboardInterrupt:",
+            "        print('Exited!')",
+            "        return"
+        ],
+        "description": "Part 3 of the process file function - exit and error handling"
+    },
+    "Transposition Cipher - Part 10 (Main Program)": {
+        "prefix": "trans_10",
+        "body": [
+            "def main():",
+            "    try:",
+            "        key = input('Enter the Key: ')",
+            "        while True:",
+            "            print('1. Encrypt')",
+            "            print('2. Decrypt')",
+            "            print('3. Exit')",
+            "            mode = int(input('\\nEnter Choice: '))",
+            "            process_file(mode, key)",
+            "            if mode == 3:",
+            "                break",
+            "    except KeyboardInterrupt:",
+            "        print('\\nExited Due to Keyboard Interrupt!')",
+            "        return",
+            "",
+            "if __name__ == '__main__':",
+            "    main()"
+        ],
+        "description": "Main program loop handling user input"
+    },
+    "Rail Fence Cipher - Part 1 (Encrypt Function - Part 1)": {
+        "prefix": "rail_1",
+        "body": [
+            "def encryptRailFence(text, key):",
+            "    rail = [['\\n' for _ in range(len(text))] for _ in range(key)]",
+            "    dir_down = False",
+            "    row, col = 0, 0",
+            "",
+            "    for i in range(len(text)):",
+            "        if (row == 0) or (row == key - 1):",
+            "            dir_down = not dir_down",
+            "        rail[row][col] = text[i]",
+            "        col += 1",
+            "        if dir_down:",
+            "            row += 1",
+            "        else:",
+            "            row -= 1"
+        ],
+        "description": "Part 1 of the encryptRailFence function - setting up the rail matrix and populating it"
+    },
+    "Rail Fence Cipher - Part 2 (Encrypt Function - Part 2)": {
+        "prefix": "rail_2",
+        "body": [
+            "    result = []",
+            "    for i in range(key):",
+            "        for j in range(len(text)):",
+            "            if rail[i][j] != '\\n':",
+            "                result.append(rail[i][j])",
+            "    return ''.join(result)"
+        ],
+        "description": "Part 2 of the encryptRailFence function - reading the matrix to form ciphertext"
+    },
+    "Rail Fence Cipher - Part 3 (Decrypt Function - Part 1)": {
+        "prefix": "rail_3",
+        "body": [
+            "def decryptRailFence(cipher, key):",
+            "    rail = [['\\n' for _ in range(len(cipher))] for _ in range(key)]",
+            "    dir_down = None",
+            "    row, col = 0, 0",
+            "",
+            "    for i in range(len(cipher)):",
+            "        if row == 0:",
+            "            dir_down = True",
+            "        if row == key - 1:",
+            "            dir_down = False",
+            "        rail[row][col] = '*'",
+            "        col += 1",
+            "        if dir_down:",
+            "            row += 1",
+            "        else:",
+            "            row -= 1"
+        ],
+        "description": "Part 1 of the decryptRailFence function - marking rail matrix positions"
+    },
+    "Rail Fence Cipher - Part 4 (Decrypt Function - Part 2)": {
+        "prefix": "rail_4",
+        "body": [
+            "    index = 0",
+            "    for i in range(key):",
+            "        for j in range(len(cipher)):",
+            "            if (rail[i][j] == '*') and (index < len(cipher)):",
+            "                rail[i][j] = cipher[index]",
+            "                index += 1"
+        ],
+        "description": "Part 2 of the decryptRailFence function - populating the matrix with the ciphertext"
+    },
+    "Rail Fence Cipher - Part 5 (Decrypt Function - Part 3)": {
+        "prefix": "rail_5",
+        "body": [
+            "    result = []",
+            "    row, col = 0, 0",
+            "",
+            "    for i in range(len(cipher)):",
+            "        if row == 0:",
+            "            dir_down = True",
+            "        if row == key - 1:",
+            "            dir_down = False",
+            "        if rail[row][col] != '*':",
+            "            result.append(rail[row][col])",
+            "        col += 1",
+            "        if dir_down:",
+            "            row += 1",
+            "        else:",
+            "            row -= 1",
+            "    return ''.join(result)"
+        ],
+        "description": "Part 3 of the decryptRailFence function - reading the matrix to form the plaintext"
+    },
+    "Rail Fence Cipher - Part 6 (Process File Function - Part 1)": {
+        "prefix": "rail_6",
+        "body": [
+            "def process_file(input_filename, output_filename, key, mode):",
+            "    try:",
+            "        with open(input_filename, 'r') as input_file:",
+            "            content = input_file.read()",
+            "            if mode == 1:",
+            "                processed_content = encryptRailFence(content, key)",
+            "                print('Encryption Matrix:')"
+        ],
+        "description": "Part 1 of the process_file function - opening the input file and starting encryption"
+    },
+    "Rail Fence Cipher - Part 7 (Process File Function - Part 2)": {
+        "prefix": "rail_7",
+        "body": [
+            "                rail = [['_' for _ in range(len(content))] for _ in range(key)]",
+            "                dir_down = False",
+            "                row, col = 0, 0",
+            "                for i in range(len(content)):",
+            "                    if (row == 0) or (row == key - 1):",
+            "                        dir_down = not dir_down",
+            "                    rail[row][col] = content[i]",
+            "                    col += 1",
+            "                    if dir_down:",
+            "                        row += 1",
+            "                    else:",
+            "                        row -= 1",
+            "                for row in rail:",
+            "                    print(' '.join(row))"
+        ],
+        "description": "Part 2 of the process_file function - constructing the encryption matrix"
+    },
+    "Rail Fence Cipher - Part 8 (Process File Function - Part 3)": {
+        "prefix": "rail_8",
+        "body": [
+            "            elif mode == 2:",
+            "                processed_content = decryptRailFence(content, key)",
+            "            with open(output_filename, 'w') as output_file:",
+            "                output_file.write(processed_content)",
+            "            print('Successfully processed the file.')",
+            "    except FileNotFoundError:",
+            "        print('File not found.')"
+        ],
+        "description": "Part 3 of the process_file function - decrypting and saving the output"
+    },
+    "Rail Fence Cipher - Part 9 (Main Function)": {
+        "prefix": "rail_9",
+        "body": [
+            "if __name__ == '__main__':",
+            "    key = int(input('Enter the depth: '))",
+            "    while True:",
+            "        print('1. Encrypt')",
+            "        print('2. Decrypt')",
+            "        print('3. Exit')",
+            "        mode = int(input('Give mode of Encryption and Decryption: '))",
+            "        if mode == 3:",
+            "            break",
+            "        input_file = input('Enter input file name: ')",
+            "        output_file = input('Enter output file name: ')",
+            "        process_file(input_file, output_file, key, mode)"
+        ],
+        "description": "Main program logic"
+    },
+    "sdes_1": {
+        "prefix": "sdes_1",
+        "body": [
+            "P10 = [3, 5, 2, 7, 4, 10, 1, 9, 8, 6]",
+            "P8 = [6, 3, 7, 4, 8, 5, 10, 9]",
+            "P4 = [2, 4, 3, 1]",
+            "IP = [2, 6, 3, 1, 4, 8, 5, 7]",
+            "IP_INV = [4, 1, 3, 5, 7, 2, 8, 6]",
+            "EP = [4, 1, 2, 3, 2, 3, 4, 1]",
+            "S0 = [[1, 0, 3, 2], [3, 2, 1, 0], [0, 2, 1, 3], [3, 1, 3, 2]]",
+            "S1 = [[0, 1, 2, 3], [2, 0, 1, 3], [3, 0, 1, 0], [2, 1, 0, 3]]",
+            "def permute(bits, table):",
+            "    return [bits[i - 1] for i in table]"
+        ],
+        "description": "Define permutation tables and a permutation function."
+    },
+    "sdes_2": {
+        "prefix": "sdes_2",
+        "body": [
+            "def left_shift(bits, n):",
+            "    return bits[n:] + bits[:n]",
+            "",
+            "def key_generation(key):",
+            "    key = [int(bit) for bit in key]",
+            "    p10_key = permute(key, P10)",
+            "    left, right = p10_key[:5], p10_key[5:]",
+            "    left, right = left_shift(left, 1), left_shift(right, 1)",
+            "    k1 = permute(left + right, P8)",
+            "    left, right = left_shift(left, 2), left_shift(right, 2)",
+            "    k2 = permute(left + right, P8)",
+            "    return k1, k2"
+        ],
+        "description": "Define the key generation function for SDES."
+    },
+    "sdes_3": {
+        "prefix": "sdes_3",
+        "body": [
+            "def sbox(input_bits, sbox):",
+            "    row = (input_bits[0] << 1) + input_bits[3]",
+            "    col = (input_bits[1] << 1) + input_bits[2]",
+            "    return [int(bit) for bit in format(sbox[row][col], '02b')]"
+        ],
+        "description": "Define the S-box function used in SDES."
+    },
+    "sdes_4": {
+        "prefix": "sdes_4",
+        "body": [
+            "def fk(bits, key):",
+            "    left, right = bits[:4], bits[4:]",
+            "    expanded_right = permute(right, EP)",
+            "    xor_result = [bit ^ k for bit, k in zip(expanded_right, key)]",
+            "    sbox_output = sbox(xor_result[:4], S0) + sbox(xor_result[4:], S1)",
+            "    p4_output = permute(sbox_output, P4)",
+            "    return [bit ^ p for bit, p in zip(left, p4_output)] + right"
+        ],
+        "description": "Define the fK function for SDES, used in both rounds of encryption."
+    },
+    "sdes_5": {
+        "prefix": "sdes_5",
+        "body": [
+            "def encrypt(plaintext, key):",
+            "    k1, k2 = key_generation(key)",
+            "    bits = [int(bit) for bit in format(ord(plaintext), '08b')]",
+            "    initial_permutation = permute(bits, IP)",
+            "    round1 = fk(initial_permutation, k1)",
+            "    round2 = fk(round1[4:] + round1[:4], k2)",
+            "    ciphertext_bits = permute(round2, IP_INV)",
+            "    ciphertext_str = ''.join(map(str, ciphertext_bits))",
+            "    return chr(int(ciphertext_str, 2))"
+        ],
+        "description": "Define the SDES encryption function."
+    },
+    "sdes_6": {
+        "prefix": "sdes_6",
+        "body": [
+            "def decrypt(ciphertext, key):",
+            "    k1, k2 = key_generation(key)",
+            "    bits = [int(bit) for bit in format(ord(ciphertext), '08b')]",
+            "    initial_permutation = permute(bits, IP)",
+            "    round1 = fk(initial_permutation, k2)",
+            "    round2 = fk(round1[4:] + round1[:4], k1)",
+            "    plaintext_bits = permute(round2, IP_INV)",
+            "    return chr(int(''.join(map(str, plaintext_bits)), 2))"
+        ],
+        "description": "Define the SDES decryption function."
+    },
+    "sdes_7": {
+        "prefix": "sdes_7",
+        "body": [
+            "def encrypt_string(plaintext, key):",
+            "    return ''.join(encrypt(char, key) for char in plaintext)"
+        ],
+        "description": "Define a function to encrypt an entire string using SDES."
+    },
+    "sdes_8": {
+        "prefix": "sdes_8",
+        "body": [
+            "def decrypt_string(ciphertext, key):",
+            "    return ''.join(decrypt(char, key) for char in ciphertext)"
+        ],
+        "description": "Define a function to decrypt an entire string using SDES."
+    },
+    "sdes_9": {
+        "prefix": "sdes_9",
+        "body": [
+            "if __name__ == '__main__':",
+            "    key = '1010000010'  # 10-bit key",
+            "    plaintext = 'HELLO WORLD'",
+            "    print('Plaintext:', plaintext)",
+            "    ciphertext = encrypt_string(plaintext, key)",
+            "    print('Ciphertext:', ciphertext)",
+            "    decrypted = decrypt_string(ciphertext, key)",
+            "    print('Decrypted:', decrypted)"
+        ],
+        "description": "Main driver code to test SDES encryption and decryption."
+    },
+    "rsa_1": {
+        "prefix": "rsa_1",
+        "body": [
+            "import math",
+            "",
+            "def encryption(text, e, n):",
+            "    encrypt = []",
+            "    for i in text:",
+            "        encrypt.append(pow(ord(i), e, n))",
+            "    return encrypt"
+        ],
+        "description": "Define the encryption function for RSA."
+    },
+    "rsa_2": {
+        "prefix": "rsa_2",
+        "body": [
+            "def decryption(encrypt, d, n):",
+            "    decrypt = []",
+            "    for i in encrypt:",
+            "        decrypt.append(pow(i, d, n))",
+            "    return decrypt"
+        ],
+        "description": "Define the decryption function for RSA."
+    },
+    "rsa_3": {
+        "prefix": "rsa_3",
+        "body": [
+            "def generate_key(p, q):",
+            "    n = p * q",
+            "    phi = (p - 1) * (q - 1)",
+            "    e = 2",
+            "    while e < phi:",
+            "        if math.gcd(e, phi) == 1:",
+            "            break",
+            "        else:",
+            "            e += 1",
+            "    d = pow(e, -1, phi)",
+            "    print(\"\\nPrime Numbers: \", p, q)",
+            "    print(\"Public Key: \", e, n)",
+            "    print(\"Private Key: \", d, n)",
+            "    return n, e, d"
+        ],
+        "description": "Define the RSA key generation function."
+    },
+    "rsa_4": {
+        "prefix": "rsa_4",
+        "body": [
+            "if __name__ == \"__main__\":",
+            "    p, q = input(\"Enter 2 prime numbers: \").split(' ')",
+            "    n, e, d = generate_key(int(p), int(q))"
+        ],
+        "description": "Driver code to accept input and generate keys."
+    },
+    "rsa_5": {
+        "prefix": "rsa_5",
+        "body": [
+            "with open(\"Input.txt\", \"r\") as f1, open(\"Encrypted.txt\", \"w\") as f2, open(\"Decrypted.txt\", \"w\") as f3:",
+            "    text = f1.read()",
+            "    print(\"\\nOriginal Text: \", text)",
+            "",
+            "    encrypt = encryption(text, e, n)",
+            "    print(\"\\nEncrypted Text: \", encrypt)",
+            "    f2.write(str(encrypt))",
+            "",
+            "    decrypt = decryption(encrypt, d, n)",
+            "    print(\"\\nDecrypted Text: \", decrypt)",
+            "",
+            "    msg = ''",
+            "    for i in decrypt:",
+            "        msg += chr(i)",
+            "    print(\"\\nOriginal Message: \", msg)",
+            "    f3.write(msg)"
+        ],
+        "description": "Main driver code to encrypt and decrypt messages from files."
+    },
+    "deffie_1": {
+        "prefix": "deffie_1",
+        "body": [
+            "import random",
+            "",
+            "def modular_exponentiation(base, exponent, modulus):",
+            "    return pow(base, exponent, modulus)"
+        ],
+        "description": "Import random module and define modular exponentiation."
+    },
+    "deffie_2": {
+        "prefix": "deffie_2",
+        "body": [
+            "def diffie_hellman(p, g):",
+            "    private_key_a = random.randint(1, p - 1)  # Private key for Alice",
+            "    private_key_b = random.randint(1, p - 1)  # Private key for Bob",
+            "    ",
+            "    print(f\"Alice's private key: {private_key_a}\")",
+            "    print(f\"Bob's private key: {private_key_b}\")",
+            "    ",
+            "    public_key_a = modular_exponentiation(g, private_key_a, p)  # g^a mod p",
+            "    public_key_b = modular_exponentiation(g, private_key_b, p)  # g^b mod p",
+            "    ",
+            "    print(f\"Alice's public key: {public_key_a}\")",
+            "    print(f\"Bob's public key: {public_key_b}\")",
+            "    ",
+            "    shared_secret_a = modular_exponentiation(public_key_b, private_key_a, p)  # (g^b)^a mod p",
+            "    shared_secret_b = modular_exponentiation(public_key_a, private_key_b, p)  # (g^a)^b mod p",
+            "    ",
+            "    assert shared_secret_a == shared_secret_b, \"Shared secrets do not match!\"",
+            "    ",
+            "    print(f\"Shared secret: {shared_secret_a}\")"
+        ],
+        "description": "Define the Diffie-Hellman function to compute keys."
+    },
+    "deffie_3": {
+        "prefix": "deffie_3",
+        "body": [
+            "if __name__ == \"__main__\":",
+            "    p = 23  # Prime number",
+            "    g = 5   # Primitive root modulo p",
+            "    ",
+            "    print(f\"Prime (p): {p}\")",
+            "    print(f\"Primitive root (g): {g}\")",
+            "    ",
+            "    diffie_hellman(p, g)"
+        ],
+        "description": "Driver code to execute the Diffie-Hellman key exchange."
+    }
+}
